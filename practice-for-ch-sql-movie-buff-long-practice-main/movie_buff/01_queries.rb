@@ -40,6 +40,10 @@ def biggest_cast
   #
   # Find the id and title of the 3 movies with the largest casts (i.e., most
   # actors).
+  #Casting.joins(:movies).group(:id)
+  Movie.joins(:castings).group(:id).order('COUNT(movies.id) DESC').limit(3).select(:id, :title)
+  #Chirp.joins(:likes).group(:id).select(:id, :body, 'COUNT(likes.id) AS num_likes')
+  #Casting.joins(:movie).group('movies.id').order('COUNT(movies.id) DESC').limit(3).select(movies: :id, movies: :title)
   
 end
 
