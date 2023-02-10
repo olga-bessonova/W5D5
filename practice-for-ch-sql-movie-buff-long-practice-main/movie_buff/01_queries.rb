@@ -61,6 +61,9 @@ def directed_by_one_of(them)
   # Find the id and title of all the movies directed by one of 'them'.
   
   # Note: Directors appear in the 'actors' table.
+  them = ['George Lucas', 'Steven Spielberg']
+
+  Movie.joins(:actors).where('actors.name IN (?)', them).select(:id, :title)
 
 end
 
